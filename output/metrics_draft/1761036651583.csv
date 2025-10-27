@@ -1,0 +1,7 @@
+algo,model,payoff,drift,volatility,mean,speed,correlation,hurst,nb_stocks,nb_paths,nb_dates,spot,strike,dividend,maturity,nb_epochs,hidden_size,factors,ridge_coeff,use_payoff_as_input,train_ITM_only,use_path,price,duration,time_path_gen,comp_time,delta,gamma,theta,rho,vega,greeks_method,price_upper_bound
+NLSM,HestonWithVar,MaxCall,0.0,0.2,0.01,2,-0.3,0.75,1000,20000,10,100,100,0.0,1,30,20,"(1.0, 1.0, 1.0)",1.0,True,True,False,33.15910732224765,191.55873799324036,106.34832572937012,85.21041226387024,,,,,,central,
+
+NLSM,HestonWithVar,MaxCall,0.0,0.2,0.01,2,-0.3,0.75,1000,20000,10,100,100,0.0,1,30,20,"(1.0, 1.0, 1.0)",1.0,True,True,False,33.54681215404049,200.58063983917236,106.21400833129883,94.36663150787354,,,,,,central,
+
+NLSM,HestonWithVar,MaxCall,0.0,0.2,0.01,2,-0.3,0.75,1000,20000,10,100,100,0.0,1,30,20,"(1.0, 1.0, 1.0)",1.0,False,True,False,34.014852023028894,162.96377444267273,105.4525077342987,57.51126670837402,,,,,,central,
+

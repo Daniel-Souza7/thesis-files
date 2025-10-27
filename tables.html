@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison Tables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #666;
+            margin-top: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        .header-row {
+            background-color: #e8e8e8;
+            font-weight: bold;
+        }
+        .green {
+            color: #006400;
+            font-weight: bold;
+        }
+        .red {
+            color: #8B0000;
+            font-weight: bold;
+        }
+        .duration-green {
+            background-color: #c6efce;
+        }
+        .duration-red {
+            background-color: #ffc7ce;
+        }
+    </style>
+</head>
+<body>
+    <h2>FIRST PAIR OF TABLES</h2>
+
+    <h3>Article Table 1</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th colspan="7">price</th>
+                    <th colspan="7">duration</th>
+                </tr>
+                <tr class="header-row">
+                    <td>d</td>
+                    <td>x₀</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">5</td>
+                    <td>80</td>
+                    <td>5.23 (0.07)</td>
+                    <td>5.12 (0.12)</td>
+                    <td>5.19 (0.09)</td>
+                    <td>5.28 (0.12)</td>
+                    <td>5.26 (0.10)</td>
+                    <td>5.20 (0.06)</td>
+                    <td>5.31 (0.05)</td>
+                    <td>11s</td>
+                    <td>9s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>24.95 (0.14)</td>
+                    <td>24.64 (0.21)</td>
+                    <td>24.72 (0.15)</td>
+                    <td>24.91 (0.16)</td>
+                    <td>24.96 (0.17)</td>
+                    <td>25.00 (0.19)</td>
+                    <td>24.97 (0.15)</td>
+                    <td>11s</td>
+                    <td>8s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>49.73 (0.21)</td>
+                    <td>49.45 (0.18)</td>
+                    <td>49.47 (0.22)</td>
+                    <td>49.62 (0.25)</td>
+                    <td>49.68 (0.22)</td>
+                    <td>49.75 (0.17)</td>
+                    <td>49.77 (0.15)</td>
+                    <td>11s</td>
+                    <td>7s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">10</td>
+                    <td>80</td>
+                    <td>9.20 (0.07)</td>
+                    <td>9.19 (0.14)</td>
+                    <td>8.82 (0.15)</td>
+                    <td>9.24 (0.11)</td>
+                    <td>9.25 (0.12)</td>
+                    <td>9.25 (0.10)</td>
+                    <td>9.27 (0.09)</td>
+                    <td>28s</td>
+                    <td>7s</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                    <td>6s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>34.33 (0.15)</td>
+                    <td>34.03 (0.17)</td>
+                    <td>33.69 (0.20)</td>
+                    <td>34.28 (0.11)</td>
+                    <td>34.25 (0.19)</td>
+                    <td>34.17 (0.11)</td>
+                    <td>34.26 (0.09)</td>
+                    <td>29s</td>
+                    <td>7s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>7s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>60.94 (0.24)</td>
+                    <td>60.90 (0.20)</td>
+                    <td>60.33 (0.25)</td>
+                    <td>61.08 (0.23)</td>
+                    <td>61.10 (0.19)</td>
+                    <td>61.07 (0.21)</td>
+                    <td>61.20 (0.13)</td>
+                    <td>29s</td>
+                    <td>7s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>6s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">50</td>
+                    <td>80</td>
+                    <td>22.45 (0.11)</td>
+                    <td>23.17 (0.10)</td>
+                    <td>21.78 (0.34)</td>
+                    <td>22.03 (0.16)</td>
+                    <td>23.51 (0.13)</td>
+                    <td>23.42 (0.11)</td>
+                    <td>23.52 (0.09)</td>
+                    <td>8m39s</td>
+                    <td>8s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                    <td>6m28s</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>53.49 (0.10)</td>
+                    <td>53.93 (0.12)</td>
+                    <td>52.15 (0.60)</td>
+                    <td>52.44 (0.21)</td>
+                    <td>54.24 (0.09)</td>
+                    <td>54.23 (0.08)</td>
+                    <td>54.37 (0.09)</td>
+                    <td>8m42s</td>
+                    <td>8s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                    <td>6m57s</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>84.31 (0.12)</td>
+                    <td>84.72 (0.12)</td>
+                    <td>82.48 (0.79)</td>
+                    <td>82.98 (0.16)</td>
+                    <td>85.03 (0.18)</td>
+                    <td>85.00 (0.20)</td>
+                    <td>85.28 (0.07)</td>
+                    <td>8m46s</td>
+                    <td>9s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                    <td>7m4s</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>My Estimates Table 1</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th colspan="7">price</th>
+                    <th colspan="7">duration</th>
+                </tr>
+                <tr class="header-row">
+                    <td>d</td>
+                    <td>x₀</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">5</td>
+                    <td>80</td>
+                    <td>5.21 (0.05)</td>
+                    <td>5.11 (0.08)</td>
+                    <td>5.11 (0.07)</td>
+                    <td>5.23 (0.07)</td>
+                    <td>5.27 (0.08)</td>
+                    <td>4.67 (0.85)</td>
+                    <td>5.31 (0.06)</td>
+                    <td>0s</td>
+                    <td>10s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                    <td>20s</td>
+                    <td>9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>24.91 (0.11)</td>
+                    <td>24.67 (0.12)</td>
+                    <td>24.68 (0.17)</td>
+                    <td>24.87 (0.11)</td>
+                    <td>24.99 (0.14)</td>
+                    <td>18.59 (7.71)</td>
+                    <td>24.99 (0.11)</td>
+                    <td>1s</td>
+                    <td>12s</td>
+                    <td>6s</td>
+                    <td>0s</td>
+                    <td>20s</td>
+                    <td>9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>49.70 (0.15)</td>
+                    <td>49.40 (0.17)</td>
+                    <td>49.35 (0.21)</td>
+                    <td>49.69 (0.18)</td>
+                    <td>49.76 (0.13)</td>
+                    <td>45.69 (6.88)</td>
+                    <td>49.77 (0.11)</td>
+                    <td>1s</td>
+                    <td>10s</td>
+                    <td>7s</td>
+                    <td>0s</td>
+                    <td>20s</td>
+                    <td>9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">10</td>
+                    <td>80</td>
+                    <td>9.18 (0.12)</td>
+                    <td>9.13 (0.12)</td>
+                    <td>9.00 (0.11)</td>
+                    <td>9.26 (0.12)</td>
+                    <td>9.31 (0.07)</td>
+                    <td>8.84 (0.94)</td>
+                    <td>9.29 (0.07)</td>
+                    <td>3s</td>
+                    <td>10s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                    <td>49s</td>
+                    <td>10s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>34.25 (0.07)</td>
+                    <td>34.07 (0.14)</td>
+                    <td>33.74 (0.29)</td>
+                    <td>34.19 (0.14)</td>
+                    <td>34.32 (0.12)</td>
+                    <td>23.64 (11.58)</td>
+                    <td>34.29 (0.09)</td>
+                    <td>7s</td>
+                    <td>10s</td>
+                    <td>8s</td>
+                    <td>0s</td>
+                    <td>50s</td>
+                    <td>10s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>61.08 (0.21)</td>
+                    <td>60.78 (0.19)</td>
+                    <td>60.48 (0.29)</td>
+                    <td>61.00 (0.17)</td>
+                    <td>61.06 (0.11)</td>
+                    <td>46.56 (15.25)</td>
+                    <td>61.14 (0.10)</td>
+                    <td>7s</td>
+                    <td>8s</td>
+                    <td>7s</td>
+                    <td>0s</td>
+                    <td>49s</td>
+                    <td>11s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">50</td>
+                    <td>80</td>
+                    <td>22.51 (0.08)</td>
+                    <td>23.25 (0.14)</td>
+                    <td>21.79 (0.34)</td>
+                    <td>22.05 (0.06)</td>
+                    <td>23.37 (0.13)</td>
+                    <td>23.37 (0.10)</td>
+                    <td>23.50 (0.10)</td>
+                    <td>3m41s</td>
+                    <td>14s</td>
+                    <td>9s</td>
+                    <td>1s</td>
+                    <td>48m27s</td>
+                    <td>10s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>53.51 (0.08)</td>
+                    <td>53.94 (0.18)</td>
+                    <td>52.42 (0.41)</td>
+                    <td>52.51 (0.15)</td>
+                    <td>-</td>
+                    <td>54.17 (0.19)</td>
+                    <td>54.37 (0.04)</td>
+                    <td>4m22s</td>
+                    <td>15s</td>
+                    <td>12s</td>
+                    <td>1s</td>
+                    <td>-</td>
+                    <td>12s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>84.13 (0.13)</td>
+                    <td>84.67 (0.16)</td>
+                    <td>82.51 (0.50)</td>
+                    <td>82.97 (0.32)</td>
+                    <td>-</td>
+                    <td>85.09 (0.15)</td>
+                    <td>85.25 (0.11)</td>
+                    <td>4m18s</td>
+                    <td>13s</td>
+                    <td>13s</td>
+                    <td>1s</td>
+                    <td>-</td>
+                    <td>11s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>COMPARISON TABLE 1</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Parameters</th>
+                    <th colspan="7">Price (Relative % Error)</th>
+                    <th colspan="7">Duration (Absolute Difference)</th>
+                </tr>
+                <tr class="header-row">
+                    <td>d</td>
+                    <td>x₀</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">5</td>
+                    <td>80</td>
+                    <td class="red">-0.38%</td>
+                    <td class="red">-0.20%</td>
+                    <td class="red">-1.54%</td>
+                    <td class="red">-0.95%</td>
+                    <td class="green">+0.19%</td>
+                    <td class="red">-10.19%</td>
+                    <td>0.00%</td>
+                    <td class="duration-green">-11s</td>
+                    <td class="duration-red">+1s</td>
+                    <td class="duration-red">+3s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+18s</td>
+                    <td class="duration-red">+9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td class="red">-0.16%</td>
+                    <td class="green">+0.12%</td>
+                    <td class="red">-0.16%</td>
+                    <td class="red">-0.16%</td>
+                    <td class="green">+0.12%</td>
+                    <td class="red">-25.64%</td>
+                    <td class="green">+0.08%</td>
+                    <td class="duration-green">-10s</td>
+                    <td class="duration-red">+4s</td>
+                    <td class="duration-red">+4s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+18s</td>
+                    <td class="duration-red">+9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td class="red">-0.06%</td>
+                    <td class="red">-0.10%</td>
+                    <td class="red">-0.24%</td>
+                    <td class="green">+0.14%</td>
+                    <td class="green">+0.16%</td>
+                    <td class="red">-8.16%</td>
+                    <td>0.00%</td>
+                    <td class="duration-green">-10s</td>
+                    <td class="duration-red">+3s</td>
+                    <td class="duration-red">+5s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+18s</td>
+                    <td class="duration-red">+9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">10</td>
+                    <td>80</td>
+                    <td class="red">-0.22%</td>
+                    <td class="red">-0.65%</td>
+                    <td class="green">+2.04%</td>
+                    <td class="green">+0.22%</td>
+                    <td class="green">+0.65%</td>
+                    <td class="red">-4.43%</td>
+                    <td class="green">+0.22%</td>
+                    <td class="duration-green">-25s</td>
+                    <td class="duration-red">+3s</td>
+                    <td class="duration-red">+2s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+43s</td>
+                    <td class="duration-red">+10s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td class="red">-0.23%</td>
+                    <td class="green">+0.12%</td>
+                    <td class="green">+0.15%</td>
+                    <td class="red">-0.26%</td>
+                    <td class="green">+0.20%</td>
+                    <td class="red">-30.82%</td>
+                    <td class="green">+0.09%</td>
+                    <td class="duration-green">-22s</td>
+                    <td class="duration-red">+3s</td>
+                    <td class="duration-red">+6s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+43s</td>
+                    <td class="duration-red">+10s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td class="green">+0.23%</td>
+                    <td class="red">-0.20%</td>
+                    <td class="green">+0.25%</td>
+                    <td class="red">-0.13%</td>
+                    <td class="red">-0.07%</td>
+                    <td class="red">-23.77%</td>
+                    <td class="red">-0.10%</td>
+                    <td class="duration-green">-22s</td>
+                    <td class="duration-red">+1s</td>
+                    <td class="duration-red">+5s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+43s</td>
+                    <td class="duration-red">+11s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">50</td>
+                    <td>80</td>
+                    <td class="green">+0.27%</td>
+                    <td class="green">+0.35%</td>
+                    <td class="green">+0.05%</td>
+                    <td class="green">+0.09%</td>
+                    <td class="red">-0.60%</td>
+                    <td class="red">-0.21%</td>
+                    <td class="red">-0.09%</td>
+                    <td class="duration-green">-4m58s</td>
+                    <td class="duration-red">+6s</td>
+                    <td class="duration-red">+7s</td>
+                    <td class="duration-red">+1s</td>
+                    <td class="duration-red">+41m59s</td>
+                    <td class="duration-red">+9s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td class="green">+0.04%</td>
+                    <td class="green">+0.02%</td>
+                    <td class="green">+0.52%</td>
+                    <td class="green">+0.13%</td>
+                    <td>-</td>
+                    <td class="red">-0.11%</td>
+                    <td>0.00%</td>
+                    <td class="duration-green">-4m20s</td>
+                    <td class="duration-red">+7s</td>
+                    <td class="duration-red">+9s</td>
+                    <td class="duration-red">+1s</td>
+                    <td>-</td>
+                    <td class="duration-red">+11s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td class="red">-0.21%</td>
+                    <td class="red">-0.06%</td>
+                    <td class="green">+0.04%</td>
+                    <td class="red">-0.01%</td>
+                    <td>-</td>
+                    <td class="green">+0.11%</td>
+                    <td class="red">-0.04%</td>
+                    <td class="duration-green">-4m28s</td>
+                    <td class="duration-red">+4s</td>
+                    <td class="duration-red">+10s</td>
+                    <td class="duration-red">+1s</td>
+                    <td>-</td>
+                    <td class="duration-red">+10s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>SECOND PAIR OF TABLES</h2>
+
+    <h3>Article Table 2</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="7">price</th>
+                    <th colspan="7">duration</th>
+                </tr>
+                <tr class="header-row">
+                    <td>d</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>8.34 (0.08)</td>
+                    <td>8.36 (0.07)</td>
+                    <td>8.22 (0.09)</td>
+                    <td>8.37 (0.07)</td>
+                    <td>8.25 (0.03)</td>
+                    <td>8.33 (0.07)</td>
+                    <td>8.23 (0.04)</td>
+                    <td>31s</td>
+                    <td>6s<td>3s</td>
+                    <td>0s</td>
+                    <td>8s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>11.81 (0.06)</td>
+                    <td>11.83 (0.07)</td>
+                    <td>11.51 (0.12)</td>
+                    <td>11.83 (0.02)</td>
+                    <td>11.79 (0.06)</td>
+                    <td>11.83 (0.05)</td>
+                    <td>11.79 (0.07)</td>
+                    <td>1m30s</td>
+                    <td>6s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                    <td>28s</td>
+                    <td>0s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>16.85 (0.07)</td>
+                    <td>20.01 (0.06)</td>
+                    <td>18.60 (0.32)</td>
+                    <td>19.31 (0.05)</td>
+                    <td>20.05 (0.06)</td>
+                    <td>20.09 (0.05)</td>
+                    <td>20.04 (0.04)</td>
+                    <td>39m37s</td>
+                    <td>8s</td>
+                    <td>4s</td>
+                    <td>0s</td>
+                    <td>1h22m45s</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>-</td>
+                    <td>23.49 (0.06)</td>
+                    <td>21.75 (0.41)</td>
+                    <td>22.90 (0.02)</td>
+                    <td>-</td>
+                    <td>23.69 (0.06)</td>
+                    <td>23.66 (0.04)</td>
+                    <td>-</td>
+                    <td>14s</td>
+                    <td>6s</td>
+                    <td>0s</td>
+                    <td>-</td>
+                    <td>1s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>-</td>
+                    <td>31.31 (0.06)</td>
+                    <td>29.93 (0.32)</td>
+                    <td>31.35 (0.06)</td>
+                    <td>-</td>
+                    <td>32.14 (0.06)</td>
+                    <td>32.13 (0.07)</td>
+                    <td>-</td>
+                    <td>1m19s</td>
+                    <td>24s</td>
+                    <td>3s</td>
+                    <td>-</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>My Estimates Table 2</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="7">Price (std)</th>
+                    <th colspan="7">Duration</th>
+                </tr>
+                <tr class="header-row">
+                    <td>d</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>8.35 (0.06)</td>
+                    <td>8.34 (0.05)</td>
+                    <td>8.21 (0.07)</td>
+                    <td>8.34 (0.04)</td>
+                    <td>8.26 (0.04)</td>
+                    <td>7.86 (0.92)</td>
+                    <td>8.24 (0.06)</td>
+                    <td>0s</td>
+                    <td>15s</td>
+                    <td>8s</td>
+                    <td>0s</td>
+                    <td>48s</td>
+                    <td>3s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>11.77 (0.07)</td>
+                    <td>11.80 (0.06)</td>
+                    <td>11.53 (0.06)</td>
+                    <td>11.80 (0.05)</td>
+                    <td>11.82 (0.07)</td>
+                    <td>9.07 (3.03)</td>
+                    <td>11.78 (0.05)</td>
+                    <td>5s</td>
+                    <td>17s</td>
+                    <td>6s</td>
+                    <td>0s</td>
+                    <td>2m53s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>16.86 (0.07)</td>
+                    <td>19.92 (0.05)</td>
+                    <td>18.46 (0.19)</td>
+                    <td>19.36 (0.08)</td>
+                    <td>20.09 (-)</td>
+                    <td>20.13 (0.10)</td>
+                    <td>20.09 (0.07)</td>
+                    <td>1h47m14s</td>
+                    <td>36s</td>
+                    <td>14s</td>
+                    <td>0s</td>
+                    <td>2h33m48s</td>
+                    <td>2s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>-</td>
+                    <td>23.40 (0.06)</td>
+                    <td>21.78 (0.45)</td>
+                    <td>22.85 (0.06)</td>
+                    <td>-</td>
+                    <td>23.68 (0.05)</td>
+                    <td>23.68 (0.03)</td>
+                    <td>-</td>
+                    <td>36s</td>
+                    <td>31s</td>
+                    <td>1s</td>
+                    <td>-</td>
+                    <td>4s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>-</td>
+                    <td>31.14 (0.05)</td>
+                    <td>29.86 (0.35)</td>
+                    <td>31.31 (0.02)</td>
+                    <td>-</td>
+                    <td>32.08 (0.04)</td>
+                    <td>32.14 (0.04)</td>
+                    <td>-</td>
+                    <td>5m44s</td>
+                    <td>6m58s</td>
+                    <td>9m50s</td>
+                    <td>-</td>
+                    <td>1m48s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>COMPARISON TABLE 2</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>d</th>
+                    <th colspan="7">Price (Relative % Error)</th>
+                    <th colspan="7">Duration (Absolute Difference)</th>
+                </tr>
+                <tr class="header-row">
+                    <td></td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                    <td>LSM</td>
+                    <td>DOS</td>
+                    <td>NLSM</td>
+                    <td>RLSM</td>
+                    <td>FQI</td>
+                    <td>RFQI</td>
+                    <td>EOP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td class="green">+0.12%</td>
+                    <td class="red">-0.24%</td>
+                    <td class="red">-0.12%</td>
+                    <td class="red">-0.36%</td>
+                    <td class="green">+0.12%</td>
+                    <td class="red">-5.64%</td>
+                    <td class="green">+0.12%</td>
+                    <td class="duration-green">-31s</td>
+                    <td class="duration-red">+9s</td>
+                    <td class="duration-red">+5s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+40s</td>
+                    <td class="duration-red">+3s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="red">-0.34%</td>
+                    <td class="red">-0.25%</td>
+                    <td class="green">+0.17%</td>
+                    <td class="red">-0.25%</td>
+                    <td class="green">+0.25%</td>
+                    <td class="red">-23.33%</td>
+                    <td class="red">-0.08%</td>
+                    <td class="duration-green">-1m25s</td>
+                    <td class="duration-red">+11s</td>
+                    <td class="duration-red">+3s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+2m25s</td>
+                    <td class="duration-red">+2s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td class="green">+0.06%</td>
+                    <td class="red">-0.45%</td>
+                    <td class="red">-0.75%</td>
+                    <td class="green">+0.26%</td>
+                    <td class="green">+0.20%</td>
+                    <td class="green">+0.20%</td>
+                    <td class="green">+0.25%</td>
+                    <td class="duration-red">+1h7m37s</td>
+                    <td class="duration-red">+28s</td>
+                    <td class="duration-red">+10s</td>
+                    <td>0s</td>
+                    <td class="duration-red">+1h11m3s</td>
+                    <td class="duration-red">+1s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>-</td>
+                    <td class="red">-0.38%</td>
+                    <td class="green">+0.14%</td>
+                    <td class="red">-0.22%</td>
+                    <td>-</td>
+                    <td class="red">-0.04%</td>
+                    <td class="green">+0.08%</td>
+                    <td>-</td>
+                    <td class="duration-red">+22s</td>
+                    <td class="duration-red">+25s</td>
+                    <td class="duration-red">+1s</td>
+                    <td>-</td>
+                    <td class="duration-red">+3s</td>
+                    <td>0s</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>-</td>
+                    <td class="red">-0.54%</td>
+                    <td class="red">-0.23%</td>
+                    <td class="red">-0.13%</td>
+                    <td>-</td>
+                    <td class="red">-0.19%</td>
+                    <td class="green">+0.03%</td>
+                    <td>-</td>
+                    <td class="duration-red">+4m25s</td>
+                    <td class="duration-red">+6m34s</td>
+                    <td class="duration-red">+9m47s</td>
+                    <td>-</td>
+                    <td class="duration-red">+1m46s</td>
+                    <td>0s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
