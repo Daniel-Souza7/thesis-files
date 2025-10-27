@@ -123,6 +123,16 @@ table_Dim_Heston_MaxCallr0_gt1 = _DimensionTable(
     stock_models=['Heston'], algos=algos,
     drift=(0.0,), use_payoff_as_input=(True, False))
 
+
+# teste servidores
+teste_servidores = _DimensionTable(
+    algos=algos,
+    stock_models=['BlackScholes'], drift=(0.0,), nb_stocks=(1, 5,), use_payoff_as_input=(True, False))
+# Código para experimentar diferentes hidden-sizes para os RNN's
+diferentes_hidden_sizes = _DimensionTable(
+    algos= ['RFQI', 'RLSM', 'EOP'], hidden_size= (10, 20, 40,),
+    stock_models=['BlackScholes'], drift=(0.0,), nb_stocks=(5,), use_payoff_as_input=(True, False))
+
 # Heston with Var
 table_Dim_HestonV_MaxCallr0_1 = _DimensionTable(
     algos=algos,
