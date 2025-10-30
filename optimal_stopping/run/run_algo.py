@@ -37,6 +37,8 @@ from optimal_stopping.algorithms.backward_induction import backward_induction_pr
 from optimal_stopping.run import configs
 
 
+import multiprocessing
+
 import joblib
 
 # GLOBAL CLASSES
@@ -45,26 +47,23 @@ class SendBotMessage:
         pass
 
     @staticmethod
-    def send_notification(text, *args, **kwargs):
+    def send_notification(text, token=None, chat_id=None, *args, **kwargs):
         print(text)
+
+NUM_PROCESSORS = multiprocessing.cpu_count()
+
+SERVER = True
+NB_JOBS = int(NUM_PROCESSORS) - 1
+
+
+SEND = True
 
 try:
     from telegram_notifications import send_bot_message as SBM
+    if SERVER:
+        SEND = True
 except Exception:
     SBM = SendBotMessage()
-
-NUM_PROCESSORS = multiprocessing.cpu_count()
-if 'ada-' in socket.gethostname() or 'arago' in socket.gethostname():
-    SERVER = True
-    NB_JOBS = int(NUM_PROCESSORS) - 1
-else:
-    SERVER = False
-    NB_JOBS = int(NUM_PROCESSORS) - 1
-
-
-SEND = False
-if SERVER:
-    SEND = True
 
 
 
@@ -505,8 +504,9 @@ def main(argv):
   try:
       if SEND:
           SBM.send_notification(
+              token="8239319342:AAGIIcoDaxJ1uauHbWfdByF4yzNYdQ5jpiA",
               text='start running AMC2 with config:\n{}'.format(FLAGS.configs),
-              chat_id="-399803347"
+              chat_id="798647521"
           )
       configs.path_gen_seed.set_seed(FLAGS.path_gen_seed)
       filepath = _run_algos()
@@ -518,18 +518,24 @@ def main(argv):
       if SEND:
           time.sleep(1)
           SBM.send_notification(
+              token="8239319342:AAGIIcoDaxJ1uauHbWfdByF4yzNYdQ5jpiA",
               text='finished',
               files=[filepath],
-              chat_id="-399803347"
+              chat_id="798647521"
           )
   except Exception as e:
       if SEND:
           SBM.send_notification(
+              token="8239319342:AAGIIcoDaxJ1uauHbWfdByF4yzNYdQ5jpiA",
               text='ERROR\n{}'.format(e),
-              chat_id="-399803347"
+              chat_id="798647521"
           )
       else:
           print('ERROR\n{}'.format(e))
+
+
+
+
 
 
 

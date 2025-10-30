@@ -70,8 +70,18 @@ Comparison prices and computation time
 
 @dataclass
 class _DimensionTable(_DefaultConfig):
-  algos: Iterable[str] = ('NLSM', 'RFQI', 'RLSM')
-  nb_stocks: Iterable[int] = (5, 10, 50, 100, 500, 1000, 2000)
+  algos: Iterable[str] = ('NLSM', 'RFQI', 'RLSM', 'LSM', 'FQI', 'DOS', 'EOP')
+  nb_stocks: Iterable[int] = (5, 10, 50, 100)
+
+@dataclass
+class _FastTable(_DefaultConfig):
+  algos: Iterable[str] = ('NLSM', 'RFQI', 'RLSM', 'DOS', 'EOP')
+  nb_stocks: Iterable[int] = (500, 1000, 1500)
+
+@dataclass
+class _FasterTable(_DefaultConfig):
+  algos: Iterable[str] = ('RFQI', 'RLSM', 'EOP')
+  nb_stocks: Iterable[int] = (100, 500, 1000)
 
 
 # tables with basis functions
@@ -124,14 +134,29 @@ table_Dim_Heston_MaxCallr0_gt1 = _DimensionTable(
     drift=(0.0,), use_payoff_as_input=(True, False))
 
 
-# teste servidores
-teste_servidores = _DimensionTable(
-    algos=algos,
-    stock_models=['BlackScholes'], drift=(0.0,), nb_stocks=(1, 5,), use_payoff_as_input=(True, False))
-# Código para experimentar diferentes hidden-sizes para os RNN's
-diferentes_hidden_sizes = _DimensionTable(
-    algos= ['RFQI', 'RLSM', 'EOP'], hidden_size= (10, 20, 40,),
-    stock_models=['BlackScholes'], drift=(0.0,), nb_stocks=(5,), use_payoff_as_input=(True, False))
+#replicação
+
+replicacao_servidores = _DimensionTable(
+    spots=[80, 100, 120], drift=(0.0,), use_payoff_as_input=(True, False))
+
+replicacao_servidores2 = _FastTable(
+    spots=[80, 100, 120], drift=(0.0,), use_payoff_as_input=(True, False))
+
+
+otimization00 = _FasterTable()
+otimaztionpayoff = _FasterTable(use_payoff_as_input=(True, False))
+otimization1 = _FasterTable(use_payoff_as_input=(True, False), nb_paths=(15000, 20000, 25000, 30000))
+
+
+otimization2 = _FasterTable(use_payoff_as_input=(True, False), nb_dates=(8, 10, 12, 18))
+
+otimization3 = _FasterTable(use_payoff_as_input=(True, False), hidden_size=(15, 20, 25, 30))
+
+
+otimization4 = _FasterTable(use_payoff_as_input=(True, False), nb_epochs=(24, 30, 38, 45))
+
+otimization5 = _FasterTable(use_payoff_as_input=(True, False), nb_runs=20)
+
 
 # Heston with Var
 table_Dim_HestonV_MaxCallr0_1 = _DimensionTable(
