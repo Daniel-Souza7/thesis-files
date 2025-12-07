@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from optimal_stopping.processes import GBMProcess
 from optimal_stopping.payoffs import BasketOption, GeometricOption
-from optimal_stopping.fdm import ExplicitFDM, ImplicitFDM, CrankNicolsonFDM, ADI2D
+from optimal_stopping.fdm import ExplicitFDM, ImplicitFDM, CrankNicolsonFDM, ADI2D, ADI3D
 from optimal_stopping.utils import ExcelWriter
 
 
@@ -165,6 +165,75 @@ def test_fdm_2d():
     return results
 
 
+def test_fdm_3d():
+    """Test 3D FDM (ADI) on basket and geometric options with 3 assets"""
+    print("\n" + "=" * 80)
+    print("3D FDM TESTS - Basket and Geometric Options (ADI) - 3 Assets")
+    print("=" * 80)
+
+    # Parameters
+    S0 = [100.0, 100.0, 100.0]
+    K = 100.0
+    T = 1.0
+    r = 0.05
+    sigma = [0.2, 0.25, 0.22]
+    q = [0.0, 0.0, 0.0]
+
+    # Grid parameters (smaller for 3D due to computational cost)
+    N_time = 30
+    N_space = 15  # 15x15x15 grid
+
+    results = []
+
+    # Test cases
+    test_cases = [
+        ('Basket Call', BasketOption, 'call'),
+        ('Basket Put', BasketOption, 'put'),
+        ('Geometric Call', GeometricOption, 'call')
+    ]
+
+    print(f"\nParameters: S0 = {S0}, K = {K}, T = {T}")
+    print(f"r = {r}, σ = {sigma}, q = {q}")
+    print(f"Grid: N_time = {N_time}, N_space = {N_space}x{N_space}x{N_space}")
+
+    for payoff_name, PayoffClass, option_type in test_cases:
+        print(f"\n{'-' * 80}")
+        print(f"{payoff_name}:")
+        print(f"{'-' * 80}")
+
+        try:
+            process = GBMProcess(S0=S0, r=r, sigma=sigma, q=q)
+            payoff = PayoffClass(strike=K, option_type=option_type)
+
+            print(f"  ADI 3D: ", end='', flush=True)
+            adi = ADI3D(process, payoff, T, N_time, N_space)
+            price, exec_time = adi.price()
+            print(f"Price = ${price:8.4f}, Time = {exec_time:.4f}s")
+
+            results.append({
+                'dimension': '3D',
+                'payoff': payoff_name,
+                'method': 'ADI',
+                'N_time': N_time,
+                'N_space': f'{N_space}x{N_space}x{N_space}',
+                'price': price,
+                'execution_time': exec_time
+            })
+
+        except Exception as e:
+            print(f"ERROR: {str(e)}")
+            results.append({
+                'dimension': '3D',
+                'payoff': payoff_name,
+                'method': 'ADI',
+                'price': None,
+                'execution_time': None,
+                'error': str(e)
+            })
+
+    return results
+
+
 def main():
     """Run all FDM tests"""
     print("\n" + "=" * 80)
@@ -181,6 +250,10 @@ def main():
     # 2D tests
     results_2d = test_fdm_2d()
     all_results.extend(results_2d)
+
+    # 3D tests
+    results_3d = test_fdm_3d()
+    all_results.extend(results_3d)
 
     # Save to Excel
     print("\n" + "=" * 80)
@@ -210,6 +283,11 @@ def main():
         df_2d = df[df['dimension'] == '2D']
         if not df_2d.empty:
             print(df_2d[['correlation', 'payoff', 'price', 'execution_time']].to_string(index=False))
+
+        print("\n3D Results:")
+        df_3d = df[df['dimension'] == '3D']
+        if not df_3d.empty:
+            print(df_3d[['payoff', 'price', 'execution_time']].to_string(index=False))
 
     return all_results
 
