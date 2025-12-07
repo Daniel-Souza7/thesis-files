@@ -25,55 +25,39 @@ class TrinomialTree(BaseTree):
         """
         Compute up, down, and probability parameters for trinomial tree
 
-        Using the standard parameterization:
-        u = exp(sigma * sqrt(2 * dt))
+        Using the standard Boyle (1986) parameterization:
+        u = exp(sigma * sqrt(3 * dt))
         d = 1 / u
         m = 1 (middle stays the same)
+
+        Probabilities from moment matching.
         """
         dt = self.dt
         sigma = self.process.sigma
         r = self.process.r
         q = self.process.q
 
-        # Up, middle, and down factors
-        self.u = np.exp(sigma * np.sqrt(2 * dt))
+        # Up, middle, and down factors (Boyle 1986)
+        # Use sqrt(3*dt) for trinomial tree
+        self.u = np.exp(sigma * np.sqrt(3 * dt))
         self.d = 1.0 / self.u
         self.m = np.ones(self.n_assets)  # Middle stays same
 
-        # Risk-neutral probabilities
-        # We need to solve for p_u, p_m, p_d such that:
-        # 1. p_u + p_m + p_d = 1
-        # 2. p_u * u + p_m * m + p_d * d = exp((r-q) * dt)  [first moment]
-        # 3. p_u * u^2 + p_m * m^2 + p_d * d^2 = exp(2*(r-q)*dt + sigma^2*dt)  [second moment]
-
-        drift = np.exp((r - q) * dt)
-        variance_term = np.exp(2 * (r - q) * dt + sigma**2 * dt)
-
+        # Risk-neutral probabilities using standard formula
+        # From Hull and other standard references
         self.p_u = np.zeros(self.n_assets)
         self.p_m = np.zeros(self.n_assets)
         self.p_d = np.zeros(self.n_assets)
 
         for i in range(self.n_assets):
-            u_i = self.u[i]
-            d_i = self.d[i]
-            m_i = self.m[i]
-            drift_i = drift if np.isscalar(drift) else drift[i]
-            var_i = variance_term[i]
+            # Standard trinomial tree probabilities
+            # ν = (r - q - σ²/2) * sqrt(dt / (3*σ²))
+            nu = ((r - q[i]) - 0.5 * sigma[i]**2) * np.sqrt(dt / (3 * sigma[i]**2))
 
-            # Solve the system
-            # From the moment matching:
-            # p_u * u + p_m + p_d * d = drift
-            # p_u * u^2 + p_m + p_d * d^2 = var_term
-            # p_u + p_m + p_d = 1
-
-            # This gives:
-            # p_u = [(var_term - drift) - (drift - d)*(d - 1)] / [(u - d)*(u - 1)]
-            # p_d = [(var_term - drift) - (drift - u)*(u - 1)] / [(d - u)*(d - 1)]
-
-            # Simplified standard formula:
-            p_u_i = ((drift_i - d_i) * (drift_i - m_i)) / ((u_i - d_i) * (u_i - m_i))
-            p_d_i = ((u_i - drift_i) * (m_i - drift_i)) / ((u_i - d_i) * (d_i - m_i))
-            p_m_i = 1 - p_u_i - p_d_i
+            # Probabilities
+            p_u_i = 1.0/6.0 + nu / 2.0
+            p_m_i = 2.0/3.0
+            p_d_i = 1.0/6.0 - nu / 2.0
 
             self.p_u[i] = p_u_i
             self.p_m[i] = p_m_i
@@ -81,9 +65,12 @@ class TrinomialTree(BaseTree):
 
         # Validate probabilities
         if np.any(self.p_u < 0) or np.any(self.p_m < 0) or np.any(self.p_d < 0):
+            print(f"Warning: Negative probabilities. p_u={self.p_u}, p_m={self.p_m}, p_d={self.p_d}")
             raise ValueError("Invalid probabilities in trinomial tree. Check parameters.")
-        if np.any(self.p_u + self.p_m + self.p_d > 1 + 1e-10):
-            raise ValueError("Probabilities sum to more than 1 in trinomial tree.")
+
+        if np.any(np.abs(self.p_u + self.p_m + self.p_d - 1.0) > 1e-10):
+            print(f"Warning: Probabilities don't sum to 1. Sum={self.p_u + self.p_m + self.p_d}")
+            raise ValueError("Probabilities don't sum to 1 in trinomial tree.")
 
     def _build_lattice(self):
         """
